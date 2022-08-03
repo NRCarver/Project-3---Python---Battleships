@@ -4,6 +4,14 @@ from random import randint
 
 board = []
 
+while True:
+    name_entry = input("What is your name? ")
+    name = name_entry.capitalize()
+    if name == "Computer":
+        print("Thats my name! Try again")
+    else:
+        break
+
 
 while True:
     board_size = int(input("What size board would you like to play? "))
@@ -49,7 +57,7 @@ while board[ship_row][ship_col] == "O":
         print("You hit the battleship!")
         board[guess_row][guess_col] = "X"
     else:
-        if guess_row > int(board_size) or guess_col > int(board_size):
+        if guess_row > int(board_size - 1) or guess_col > int(board_size - 1):
             print("invalid guess")
         elif board[guess_row][guess_col] == "-":
             print("You have already guessed here")
