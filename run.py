@@ -4,8 +4,10 @@ from random import randint
 
 board = []
 
-for i in range(0, 6):
-    board.append(["O"] * 6)
+board_size = int(input("What size board would you like to play?"))
+
+for i in range(0, board_size):
+    board.append(["O"] * board_size)
 
 
 def print_board(board):
@@ -38,7 +40,7 @@ while board[ship_row][ship_col] == "O":
         print("You hit the battleship!")
         board[guess_row][guess_col] = "X"
     else:
-        if guess_row > int(6) or guess_col > int(6):
+        if guess_row > int(board_size) or guess_col > int(board_size):
             print("invalid guess")
         elif board[guess_row][guess_col] == "X":
             print("You have already guessed here")
