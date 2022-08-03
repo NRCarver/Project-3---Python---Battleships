@@ -9,18 +9,20 @@ while True:
     name_entry = input("What is your name? ")
     name = name_entry.capitalize()
     if name == "Computer":
-        print("Thats my name! Try again")
+            print("Thats my name! Try again")
     else:
         break
 
 
 while True:
-    board_size = int(input("What width board would you like to play? "))
-    if board_size < 3 or board_size > 7:
-        print("The board size needs to be between 3x3 and 7x7")
-    else:
-        break
-
+    try:
+        board_size = int(input("What width board would you like to play? "))
+        if board_size < 3 or board_size > 7:
+            print("The board size needs to be between 3x3 and 7x7")
+        else:
+            break
+    except ValueError:
+        print("Please enter an integer between 3 and 7")
 
 for i in range(0, board_size):
     player_board.append(["O"] * board_size)
@@ -97,22 +99,25 @@ while computer_board[computer_ship_row][computer_ship_col] == "O":
         print("You lost the game!")
         break
     else:
-        guess_row = int(input("Guess the Row: "))
-        guess_col = int(input("Guess the Column: "))
-        if guess_row == computer_ship_row and guess_col == computer_ship_col:
-            print("You hit the battleship!")
-            computer_board[guess_row][guess_col] = "X"
-        else:
-            if guess_row > int(board_size - 1) or guess_col > int(board_size - 1):
-                print("invalid guess")
-            elif computer_board[guess_row][guess_col] == "-":
-                print("You have already guessed here, try again")
-            else: 
-                print(f"You guessed ({guess_row},{guess_col}) and you missed!")
-                print(computer_ship_row, computer_ship_col)
-                computer_board[guess_row][guess_col] = "-"
-                computer_guess()
-                print_computer_board(computer_board)
+        try:
+            guess_row = int(input("Guess the Row: "))
+            guess_col = int(input("Guess the Column: "))
+            if guess_row == computer_ship_row and guess_col == computer_ship_col:
+                print("You hit the battleship!")
+                computer_board[guess_row][guess_col] = "X"
+            else:
+                if guess_row > int(board_size - 1) or guess_col > int(board_size - 1):
+                    print("invalid guess")
+                elif computer_board[guess_row][guess_col] == "-":
+                    print("You have already guessed here, try again")
+                else: 
+                    print(f"You guessed ({guess_row},{guess_col}) and you missed!")
+                    print(computer_ship_row, computer_ship_col)
+                    computer_board[guess_row][guess_col] = "-"
+                    computer_guess()
+                    print_computer_board(computer_board)
+        except ValueError:
+            print("Please enter a valid coordinate")
 else:
     print_player_board(player_board)
     print_computer_board(computer_board)
