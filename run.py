@@ -30,10 +30,12 @@ for i in range(0, board_size):
 
 
 def print_player_board(player_board):
+    print(f"{name}'s Board")
     for row in player_board:
         print(" ".join(row))
 
 def print_computer_board(computer_board):
+    print("Computer Board")
     for row in computer_board:
         print(" ".join(row))
 
@@ -49,24 +51,32 @@ print_computer_board(computer_board)
 ships_num = board_size
 
 
-def rand_row(computer_board):
+def rand_row_computer(computer_board):
     return randint(0, len(computer_board) - 1)
 
 
-def rand_col(computer_board):
+def rand_col_computer(computer_board):
     return randint(0, len(computer_board) - 1)
 
+def computer_guess_row(player_board):
+    return randint(0, len(player_board) - 1)
 
-ship_row = rand_row(computer_board)
-ship_col = rand_col(computer_board)
+def computer_guess_col(player_board):
+    return randint(0, len(player_board) - 1)
 
+
+player_ship_row = rand_row_computer(computer_board)
+player_ship_col = rand_col_computer(computer_board)
+
+computer_ship_row = rand_row_computer(player_board)
+computer_ship_col = rand_col_computer(player_board)
 # Game logic to check if a guess is valid, miss or hit
 
-while computer_board[ship_row][ship_col] == "O":
+while computer_board[computer_ship_row][computer_ship_col] == "O":
     guess_row = (int(input("Guess the Row: ")) - 1)
     guess_col = (int(input("Guess the Column: ")) - 1)
 
-    if guess_row == ship_row and guess_col == ship_col:
+    if guess_row == computer_ship_row and guess_col == computer_ship_col:
         print("You hit the battleship!")
         computer_board[guess_row][guess_col] = "X"
     else:
@@ -76,9 +86,10 @@ while computer_board[ship_row][ship_col] == "O":
             print("You have already guessed here, try again")
         else: 
             print("You missed!")
-            print(ship_row, ship_col)
+            print(computer_ship_row, computer_ship_col)
             computer_board[guess_row][guess_col] = "-"
             print_computer_board(computer_board)
 else:
+    print_player_board(player_board)
     print_computer_board(computer_board)
     print(f"You sunk the battleship! Well done {name}!")
