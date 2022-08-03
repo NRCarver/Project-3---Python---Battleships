@@ -30,11 +30,13 @@ def rand_col(board):
 ship_row = rand_row(board)
 ship_col = rand_col(board)
 
-guess_row = int(input("Guess the Row: "))
-guess_col = int(input("Guess the Column: "))
+guess_row = int(input("Guess the Row: ")) - 1
+guess_col = int(input("Guess the Column: ")) - 1
 
 if guess_row == ship_row and guess_col == ship_col:
     print("You hit the battleship!")
 else:
     print("You missed!")
     print(ship_row, ship_col)
+    board[guess_row][guess_col] = "X"
+    print_board(board)
