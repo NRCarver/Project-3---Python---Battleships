@@ -4,7 +4,14 @@ from random import randint
 
 board = []
 
-board_size = int(input("What size board would you like to play? "))
+
+while True:
+    board_size = int(input("What size board would you like to play? "))
+    if board_size < 3 or board_size > 7:
+        print("The board size needs to be between 3x3 and 7x7")
+    else:
+        break
+
 
 for i in range(0, board_size):
     board.append(["O"] * board_size)
@@ -19,6 +26,8 @@ print_board(board)
 
 
 # create random ship placement
+
+ships_num = board_size
 
 
 def rand_row(board):
