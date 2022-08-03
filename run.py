@@ -54,16 +54,32 @@ ships_num = board_size
 def rand_row_computer(computer_board):
     return randint(0, len(computer_board) - 1)
 
-
 def rand_col_computer(computer_board):
     return randint(0, len(computer_board) - 1)
 
-def computer_guess_row(player_board):
+def fcomputer_guess_row(player_board):
     return randint(0, len(player_board) - 1)
 
-def computer_guess_col(player_board):
+def fcomputer_guess_col(player_board):
     return randint(0, len(player_board) - 1)
 
+
+# Function for computer guesses
+
+def computer_guess():
+    computer_guess_row = fcomputer_guess_row(player_board)
+    computer_guess_col = fcomputer_guess_col(player_board)
+    while player_board[player_ship_row][player_ship_col] == "O":
+        if computer_guess_row == player_ship_row and computer_guess_col == player_ship_col:
+            print("Computer hit the battleship!")
+            player_board[computer_guess_row][computer_guess_col] = "X"
+        else:
+            print(f"Computer guessed ({computer_guess_row},{computer_guess_col}) and missed!")
+            print(player_ship_row, player_ship_col)
+            player_board[computer_guess_row][computer_guess_col] = "-"
+            print_player_board(player_board)
+            break
+    
 
 player_ship_row = rand_row_computer(computer_board)
 player_ship_col = rand_col_computer(computer_board)
@@ -73,8 +89,8 @@ computer_ship_col = rand_col_computer(player_board)
 # Game logic to check if a guess is valid, miss or hit
 
 while computer_board[computer_ship_row][computer_ship_col] == "O":
-    guess_row = (int(input("Guess the Row: ")) - 1)
-    guess_col = (int(input("Guess the Column: ")) - 1)
+    guess_row = int(input("Guess the Row: "))
+    guess_col = int(input("Guess the Column: "))
 
     if guess_row == computer_ship_row and guess_col == computer_ship_col:
         print("You hit the battleship!")
@@ -88,6 +104,7 @@ while computer_board[computer_ship_row][computer_ship_col] == "O":
             print("You missed!")
             print(computer_ship_row, computer_ship_col)
             computer_board[guess_row][guess_col] = "-"
+            computer_guess()
             print_computer_board(computer_board)
 else:
     print_player_board(player_board)
