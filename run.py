@@ -1,6 +1,6 @@
 from random import randint
 
-#create board for gameplay
+# create board for gameplay
 
 board = []
 
@@ -16,18 +16,25 @@ def print_board(board):
 print_board(board)
 
 
-#create random ship placement
+# create random ship placement
 
 
 def rand_row(board):
-    print(randint(0, len(board) - 1))
+    return randint(0, len(board) - 1)
 
 
 def rand_col(board):
-    print(randint(0, len(board) - 1))
+    return randint(0, len(board) - 1)
 
 
-rand_row(board)
+ship_row = rand_row(board)
+ship_col = rand_col(board)
 
+guess_row = int(input("Guess the Row: "))
+guess_col = int(input("Guess the Column: "))
 
-rand_col(board)
+if guess_row == ship_row and guess_col == ship_col:
+    print("You hit the battleship!")
+else:
+    print("You missed!")
+    print(ship_row, ship_col)
