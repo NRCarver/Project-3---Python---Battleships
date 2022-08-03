@@ -2,7 +2,8 @@ from random import randint
 
 # create board for gameplay
 
-board = []
+player_board = []
+computer_board = []
 
 while True:
     name_entry = input("What is your name? ")
@@ -22,15 +23,25 @@ while True:
 
 
 for i in range(0, board_size):
-    board.append(["O"] * board_size)
+    player_board.append(["O"] * board_size)
+
+for i in range(0, board_size):
+    computer_board.append(["O"] * board_size)
 
 
-def print_board(board):
-    for row in board:
+def print_player_board(player_board):
+    for row in player_board:
+        print(" ".join(row))
+
+def print_computer_board(computer_board):
+    for row in computer_board:
         print(" ".join(row))
 
 
-print_board(board)
+
+print_player_board(player_board)
+print("\n")
+print_computer_board(computer_board)
 
 
 # create random ship placement
@@ -38,34 +49,34 @@ print_board(board)
 ships_num = board_size
 
 
-def rand_row(board):
-    return randint(0, len(board) - 1)
+def rand_row(computer_board):
+    return randint(0, len(computer_board) - 1)
 
 
-def rand_col(board):
-    return randint(0, len(board) - 1)
+def rand_col(computer_board):
+    return randint(0, len(computer_board) - 1)
 
 
-ship_row = rand_row(board)
-ship_col = rand_col(board)
+ship_row = rand_row(computer_board)
+ship_col = rand_col(computer_board)
 
-while board[ship_row][ship_col] == "O":
+while computer_board[ship_row][ship_col] == "O":
     guess_row = int(input("Guess the Row: "))
     guess_col = int(input("Guess the Column: "))
 
     if guess_row == ship_row and guess_col == ship_col:
         print("You hit the battleship!")
-        board[guess_row][guess_col] = "X"
+        computer_board[guess_row][guess_col] = "X"
     else:
         if guess_row > int(board_size - 1) or guess_col > int(board_size - 1):
             print("invalid guess")
-        elif board[guess_row][guess_col] == "-":
-            print("You have already guessed here")
+        elif computer_board[guess_row][guess_col] == "-":
+            print("You have already guessed here, try again")
         else: 
             print("You missed!")
             print(ship_row, ship_col)
-            board[guess_row][guess_col] = "-"
-            print_board(board)
+            computer_board[guess_row][guess_col] = "-"
+            print_computer_board(computer_board)
 else:
-    print_board(board)
-    print("You sunk the battleship! Well done!")
+    print_computer_board(computer_board)
+    print(f"You sunk the battleship! Well done {name}!")
