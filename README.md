@@ -1,5 +1,7 @@
 # Battleships - A python game 
 
+[Link to Game](https://battleships-python-project3.herokuapp.com/)
+
 I have created a game of battleships, written in Python, that can be played using the Code Institue mock terminal on Heroku.
 
 Battleships is a simple game where you and you opponent have a battleship hidden somewhere on your grid. You take it in turns to guess where your opponents battleship is and whoever sinks the others ship is the winner!
