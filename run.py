@@ -9,7 +9,7 @@ while True:
     # Enter your name
 
     while True:
-        name_entry = input("What is your name? ")
+        name_entry = input("What is your name?\n")
         name = name_entry.capitalize()
         if name == "Computer":
                 print("Thats my name! Try again")
@@ -19,7 +19,7 @@ while True:
     # Choose the size of board you want to play on.
     while True:
         try:
-            board_size = int(input("What board size would you like to play? "))
+            board_size = int(input("What board size would you like to play?\n"))
             if board_size < 3 or board_size > 7:
                 print("The board size needs to be between 3x3 and 7x7")
             else:
@@ -47,10 +47,6 @@ while True:
         for row in computer_board:
             print(" ".join(row))
 
-    print_player_board(player_board)
-    print("\n")
-    print_computer_board(computer_board)
-
     # create random ship placement
 
     ships_num = (board_size - 2)
@@ -67,6 +63,12 @@ while True:
 
     def fcomputer_guess_col(player_board):
         return randint(0, len(player_board) - 1)
+
+    # Print player and computer boards
+
+    print_player_board(player_board)
+    print("\n")
+    print_computer_board(computer_board)
 
     # Function for computer guesses
 
@@ -86,6 +88,7 @@ while True:
             else:
                 print(f"Computer guessed ({computer_guess_row},{computer_guess_col})")
                 print("Computer missed your ship!")
+                print(f"You ship is placed at coordinates ({player_ship_row},{player_ship_col})")
                 print(player_ship_row, player_ship_col)
                 player_board[computer_guess_row][computer_guess_col] = "-"
                 print_player_board(player_board)
@@ -99,6 +102,8 @@ while True:
     computer_ship_row = rand_row_computer(player_board)
     computer_ship_col = rand_col_computer(player_board)
 
+    print(f"You ship is placed at coordinates ({player_ship_row},{player_ship_col})")
+
     # Game logic to check if a guess is valid, miss or hit and end game
 
     while computer_board[computer_ship_row][computer_ship_col] == "O":
@@ -107,8 +112,8 @@ while True:
             break
         else:
             try:
-                guess_row = int(input("Guess the Row: "))
-                guess_col = int(input("Guess the Column: "))
+                guess_row = int(input("Guess the Row:\n"))
+                guess_col = int(input("Guess the Column:\n"))
                 if (guess_row == computer_ship_row) and (
                 guess_col == computer_ship_col):
                     print("You hit the battleship!")
@@ -135,7 +140,7 @@ while True:
 
     # Restart the game or not
     print("Game Over, would you like to play again or close the game?")
-    restart = input("Enter 'Y' to restart ")
+    restart = input("Enter 'Y' to restart or any other key to quit\n")
 
     if restart != "Y":
         break
