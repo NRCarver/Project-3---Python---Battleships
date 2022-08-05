@@ -52,7 +52,13 @@ def input_value(msg):
 
 def main():
     """
+    Game function
     """
+    print("-" * 50)
+    print(" Welcome to  BATTLESHIPS!!")
+    print(" The Board size can range from 3x3 to 7x7")
+    print(" Top left corner is row: 0, col: 0")
+    print("-" * 50)
     while True:
         # create board for gameplay
 
