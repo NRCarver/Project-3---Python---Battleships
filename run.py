@@ -55,9 +55,11 @@ def main():
     Game function
     """
     print("-" * 50)
-    print(" Welcome to  BATTLESHIPS!!")
-    print(" The Board size can range from 3x3 to 7x7")
-    print(" Top left corner is row: 0, col: 0")
+    print(" Welcome to  BATTLESHIPS!!\n")
+    print(" To start, you will need to enter your name and board width.")
+    print(" The board size can range from 3x3 to 7x7\n")
+    print(" Note: The top left corner coordinate is row: 0, col: 0\n")
+    print(" Good luck and enjoy the game!")
     print("-" * 50)
     while True:
         # create board for gameplay
@@ -72,6 +74,8 @@ def main():
             name = name_entry.capitalize()
             if name == COMPUTER_NAME:
                 print("\nThats my name! Try again")
+            if name == "":
+                continue
             else:
                 break
 
