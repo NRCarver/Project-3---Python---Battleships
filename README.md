@@ -10,6 +10,11 @@ Battleships is a simple game where you and you opponent have a battleship hidden
 
  Battleships is a game of luck and after entering your name and the board dimensions, the player will guess one of the computers coordinates on their grid by selecting the row and column of their choice. Note that the grid starts at (0,0) in the top left corner. If the player hits the computers ship, the game ends. If the player misses, then the computer will guess a coordinate. Gameplay continues until either the player or computer hits the opponents battleship and the game is over!
 
+![](./assets/README%20images/battleships_logic.png)
+![](./assets/README%20images/intro_screenshot.png)
+![](./assets/README%20images/board_w_guess_screenshot.png)
+![](./assets/README%20images/youwin_screenshot.png)
+
  ### Features
 
  - Enter your name to name your grid.

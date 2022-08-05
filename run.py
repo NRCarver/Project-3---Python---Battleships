@@ -116,11 +116,6 @@ def main():
             player_ship_col
         ))
 
-        print("Computer ship is placed at coordinates ({}, {})\n".format(
-            computer_ship_row,
-            computer_ship_col
-        ))
-
         # Game logic to check if a guess is valid and miss or hit.
         human_playing = True
         game_over = False
