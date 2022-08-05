@@ -2,18 +2,6 @@ from random import randint
 
 COMPUTER_NAME = "Computer"
 
-# Function for computer guesses
-# def print_player_board(player_name, player_board):
-#     print(f"{player_name}'s Board")
-#     for row in player_board:
-#         print(" ".join(row))
-
-
-# def print_computer_board(computer_board):
-#     print("Computer Board")
-#     for row in computer_board:
-#         print(" ".join(row))
-
 
 def print_board(player_name, board):
     """
@@ -46,54 +34,11 @@ def check_guess(player_name, target_row, target_col, c_row,
     return 0
 
 
-# def computer_guess(player_name, player_board, player_ship_row, player_ship_col):
-#     computer_guess_row = fcomputer_guess_row(player_board)
-#     computer_guess_col = fcomputer_guess_col(player_board)
-#     while player_board[player_ship_row][player_ship_col] == "O":
-#         if (computer_guess_row == player_ship_row) and (
-#                 computer_guess_col == player_ship_col):
-#             print("Computer guessed ({}, {})".format(
-#                 computer_guess_row, computer_guess_col))
-#             print("Computer hit your battleship!")
-#             player_board[computer_guess_row][computer_guess_col] = "X"
-#             print_board(player_name, player_board)
-#             break
-#         elif player_board[computer_guess_row][computer_guess_col] == "-":
-#             # computer_guess()
-#             pass
-#         else:
-#             print(f"""Computer guessed (
-#                 {computer_guess_row},{computer_guess_col})""")
-#             print("Computer missed your ship!")
-#             print("You ship is placed at coordinates ({}, {})".format(
-#                 player_ship_row, player_ship_col))
-#             print(player_ship_row, player_ship_col)
-#             player_board[computer_guess_row][computer_guess_col] = "-"
-#             print_board(player_name, player_board)
-#             break
-
-
 def rand_value(board_size):
     """
     Generate random value
     """
     return randint(0, board_size - 1)
-
-
-# def rand_row_computer(computer_board):
-#     return randint(0, len(computer_board) - 1)
-
-
-# def rand_col_computer(computer_board):
-#     return randint(0, len(computer_board) - 1)
-
-
-# def fcomputer_guess_row(player_board):
-#     return randint(0, len(player_board) - 1)
-
-
-# def fcomputer_guess_col(player_board):
-#     return randint(0, len(player_board) - 1)
 
 
 def input_value(msg):
@@ -140,10 +85,6 @@ def main():
         initialize_board(player_board, board_size)
         initialize_board(computer_board, board_size)
 
-        # Functions to print your board and the computer board
-
-        # create random ship placement
-
         # Print player and computer boards
 
         print_board(name, player_board)
@@ -157,7 +98,7 @@ def main():
         computer_ship_row = rand_value(board_size)
         computer_ship_col = rand_value(board_size)
 
-        print("You ship is placed at coordinates ({}, {})/n".format(
+        print("You ship is placed at coordinates ({}, {})\n".format(
             player_ship_row,
             player_ship_col
         ))
@@ -202,7 +143,8 @@ def main():
 
             # Print boards
             target_board = player_board if human_playing else computer_board
-            target_board[guess_row][guess_col] = "X" if (result == 1) or (result == -1) else "-"
+            target_board[guess_row][guess_col] = "X" if (result == 1) or\
+                (result == -1) else "-"
             print_board(
                 name if human_playing else COMPUTER_NAME, target_board)
 
@@ -218,36 +160,6 @@ def main():
                 print("\nWell done! You Win! \n")
                 game_over = True
             human_playing = not human_playing
-
-        # while computer_board[computer_ship_row][computer_ship_col] == "O":
-        #     if player_board[player_ship_row][player_ship_col] == "X":
-        #         print("You lost the game!")
-        #         break
-        #     else:
-        #         guess_row = input_value("Guess the Row:\n")
-        #         guess_col = input_value("Guess the Column:\n")
-        #         if (guess_row == computer_ship_row) and (
-        #                 guess_col == computer_ship_col):
-        #             print("You hit the battleship!")
-        #             computer_board[guess_row][guess_col] = "X"
-        #         else:
-        #             if (guess_row > int(board_size - 1)) or (
-        #                     guess_col > int(board_size - 1)):
-        #                 print("invalid guess")
-        #             elif computer_board[guess_row][guess_col] == "-":
-        #                 print("You have already guessed here, try again")
-        #             else:
-        #                 print(f"You guessed ({guess_row},{guess_col})")
-        #                 print("You missed!")
-        #                 print(computer_ship_row, computer_ship_col)
-        #                 computer_board[guess_row][guess_col] = "-"
-        #                 computer_guess(name, player_board, player_ship_row,
-        #                                player_ship_col)
-        #                 print_board(COMPUTER_NAME, computer_board)
-        # else:
-        #     print_board(name, player_board)
-        #     print_board(COMPUTER_NAME, computer_board)
-        #     print(f"You sunk the battleship! Well done {name}!")
 
         # Restart the game or not
         print("Game Over, would you like to play again or close the game?")
