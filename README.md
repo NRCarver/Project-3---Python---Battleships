@@ -12,6 +12,7 @@ Battleships is a simple game where you and you opponent have a battleship hidden
 
 ![](./assets/README%20images/battleships_logic.png)
 ![](./assets/README%20images/intro_screenshot.png)
+![](./assets/README%20images/board_creation.png)
 ![](./assets/README%20images/board_w_guess_screenshot.png)
 ![](./assets/README%20images/youwin_screenshot.png)
 
