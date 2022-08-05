@@ -42,6 +42,9 @@ def rand_value(board_size):
 
 
 def input_value(msg):
+    """
+    Enter and check player guesses
+    """
     while True:
         try:
             value = int(input(msg))
@@ -118,7 +121,7 @@ def main():
             computer_ship_col
         ))
 
-        # Game logic to check if a guess is valid, miss or hit and end game
+        # Game logic to check if a guess is valid and miss or hit.
         human_playing = True
         game_over = False
         while not game_over:
@@ -151,7 +154,7 @@ def main():
                 player_ship_col
             )
 
-            # Print boards
+            # Show the result of a guess
             target_board = player_board if human_playing else computer_board
             target_board[guess_row][guess_col] = "X" if (result == 1) or\
                 (result == -1) else "-"
